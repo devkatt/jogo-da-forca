@@ -143,3 +143,6 @@ def sortearTema(temas):
   """
   tema = random.choice(temas)
   return tema
+
+def start(tema, palavraSecreta):
+  
