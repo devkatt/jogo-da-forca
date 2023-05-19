@@ -144,5 +144,16 @@ def sortearTema(temas):
   tema = random.choice(temas)
   return tema
 
+acertos = 0
+erros = 0
+letrasTentadas = []
+letrasDescobertas = []
+
+def printForca(erros):
+  forca = estados(erros)
+  for linha in forca:
+    print(linha)
+
+
+
 def start(tema, palavraSecreta):
-  
