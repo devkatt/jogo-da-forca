@@ -154,6 +154,11 @@ def printForca(erros):
   for linha in forca:
     print(linha)
 
-
+def printPlacar():
+  print("Palavra secreta: ", letrasDescobertas)
+  print("Letras tentadas: ", letrasTentadas)
+  print("Acertos: ", acertos)
+  print("Erros: ", erros)
+  print()
 
 def start(tema, palavraSecreta):
