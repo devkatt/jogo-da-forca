@@ -2,9 +2,6 @@ import random
 
 #Etapa 0 - ASCII de estados da forca
 
-'''A forca possui 7 estados que vão desde o estado 0 (forca sem o corpo), 
-até o estado 6 (totalmente enforcado)'''
-
 #Estados da Forca:
 estado0 = [
 "╔════════╗",
@@ -107,13 +104,6 @@ letrasEspeciais = {
   }
 
 def convertPalavra(palavra):
-  """
-  palavra --> string contendo uma palavra
-
-  ________________
-  Retorna a palavra sem 'acentos', sem hifens e em CAIXA ALTA.
-  Também tira espaços e quebra de linha da palavra, se houver.
-  """
   palavra = palavra.replace("\n", "")
   palavra = palavra.upper()
   
@@ -127,20 +117,10 @@ def convertPalavra(palavra):
 #Etapa 2 - Sorteador
 
 def sortearPalavra(palavras):
-  """
-  palavras --> uma lista contendo palavras;
-  ---------------
-  Dada uma lista de palavras, sorteia e retorna uma palavra da lista.
-  """
   palavra = random.choice(palavras)
   return palavra
 
 def sortearTema(temas):
-  """
-  temas --> uma lista contendo temas;
-  ---------------
-  Dada uma lista de temas, sorteia e retorna um tema da lista.
-  """
   tema = random.choice(temas)
   return tema
 
