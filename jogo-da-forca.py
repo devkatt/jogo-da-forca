@@ -141,4 +141,11 @@ def printPlacar():
   print("Erros: ", erros)
   print()
 
+def definirPlacar(a, e, lt, ld):
+  global acertos, erros, letrasTentadas, letrasDescobertas
+  acertos = a
+  erros = e
+  letrasTentadas = lt
+  letrasDescobertas = " ".join(ld) #transforma em string
+
 def start(tema, palavraSecreta):
