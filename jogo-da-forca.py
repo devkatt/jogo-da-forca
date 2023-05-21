@@ -1,4 +1,5 @@
 import random
+import os
 
 #Etapa 0 - ASCII de estados da forca
 
@@ -135,6 +136,7 @@ def printForca(erros):
     print(linha)
 
 def printPlacar():
+  
   print("Palavra secreta: ", letrasDescobertas)
   print("Letras tentadas: ", letrasTentadas)
   print("Acertos: ", acertos)
@@ -149,6 +151,14 @@ def definirPlacar(a, e, lt, ld):
   letrasDescobertas = " ".join(ld) #transforma em string
 
 def start(tema, palavraSecreta):
+  
+  def printHeader(tema):
+    
+    print()
+    print("********** JOGO DA FORCA **********")
+    print()
+    print("TEMA:", tema)
+
 
 def validarLetra(entrada, letrasDigitadas):
   entrada = convertPalavra(entrada)#Tira os acentos da palavra
@@ -186,3 +196,4 @@ while querJogar:
 
 #Comecando o jogo
 start(tema, palavraSecreta)
+
