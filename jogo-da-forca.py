@@ -149,3 +149,34 @@ def definirPlacar(a, e, lt, ld):
   letrasDescobertas = " ".join(ld) #transforma em string
 
 def start(tema, palavraSecreta):
+
+def validarLetra(entrada, letrasDigitadas):
+  entrada = convertPalavra(entrada)#Tira os acentos da palavra
+ 
+  #Validando entrada
+  teste1 = not entrada.isalpha() #Analisa se a entrada não é uma letra
+  teste2 = len(entrada) > 1  #Analisa se foi digitada mais que uma letra
+  teste3 = entrada in letrasDigitadas #Analisa se a letra já tinha sido inserida antes
+ 
+  while teste1 or teste2 or teste3:
+   
+    if teste1:
+      print("Digite apenas letras! Tente novamente.")
+   
+    elif teste2:
+      print("Você inseriu mais de uma letra! Tente novamente.")
+ 
+    elif teste3:
+      print("Você já digitou essa letra...")
+   
+    entrada = input("Digite uma letra novamente: ").upper()
+   
+    entrada = convertPalavra(entrada)#Tira os acentos da palavra
+    teste1 = not entrada.isalpha() #Analisa se a entrada não é uma letra
+    teste2 = len(entrada) > 1  #Analisa se foi digitada mais que uma letra
+    teste3 = entrada in letrasDigitadas #Analisa se a letra já tinha sido inserida antes
+ 
+  return entrada 
+
+#Comecando o jogo
+start(tema, palavraSecreta)
