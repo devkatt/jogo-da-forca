@@ -178,5 +178,11 @@ def validarLetra(entrada, letrasDigitadas):
  
   return entrada 
 
+#Condição para continuar jogando
+querJogar = True
+while querJogar:
+  listaTemas = list(palavras.keys()) #pega as chaves do dicionário palavras e adiciona elas numa lista
+  tema = sortearTema(listaTemas)
+
 #Comecando o jogo
 start(tema, palavraSecreta)
