@@ -158,6 +158,14 @@ def start(tema, palavraSecreta):
     print("********** JOGO DA FORCA **********")
     print()
     print("TEMA:", tema)
+    
+  def printResultado(palavraSecreta, acertos, erros):
+    if acertos == len(palavraSecreta):
+      print("PARABÉNS VOCÊ GANHOU!!")
+     
+    if erros == 6:
+      print("GAME OVER!")
+      print("A palavra era: ", palavraSecreta)
 
 
 def validarLetra(entrada, letrasDigitadas):
