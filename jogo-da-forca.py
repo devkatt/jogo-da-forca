@@ -115,8 +115,6 @@ def convertPalavra(palavra):
 
   return palavra
 
-#Etapa 2 - Sorteador
-
 def sortearPalavra(palavras):
   palavra = random.choice(palavras)
   return palavra
@@ -167,9 +165,36 @@ def start(tema, palavraSecreta):
       print("GAME OVER!")
       print("A palavra era: ", palavraSecreta)
 
+  acertos = 0
+  erros = 0
+  letrasDigitadas = []
+  letrasDescobertas = ["_"]*len(palavraSecreta)
+  definirPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+  maximoAcertos = len(palavraSecreta) #Quantidade máxima de letras que é possível acertar
+ 
+  while (erros < 6):
+    printHeader(tema)
+    printForca(erros)
+    printPlacar()
+    letraDigitada = pedirLetra(letrasDigitadas)
+   
+    if letraDigitada in palavraSecreta:
+      #Substituindo traços pela letra descoberta
+      updateAcertadas(letraDigitada, letrasDescobertas, palavraSecreta)
+      acertos += palavraSecreta.count(letraDigitada)
+      if acertos == maximoAcertos:
+        definirPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+        clear()
+        break
 
+    else:
+      erros += 1 
+     
+    #Atualizando os valores do placar
+    definirPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
+    clear()
 
-  #IMpressões finais do jogo
+  #Impressões finais do jogo
   printHeader(tema)
   printForca(erros)
   printPlacar()
