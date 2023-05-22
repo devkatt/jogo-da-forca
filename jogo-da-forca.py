@@ -168,6 +168,30 @@ def start(tema, palavraSecreta):
       print("A palavra era: ", palavraSecreta)
 
 
+
+  #IMpressões finais do jogo
+  printHeader(tema)
+  printForca(erros)
+  printPlacar()
+  printResultado(palavraSecreta, acertos, erros)
+  print()
+  print("---------------FIM DE JOGO---------------")
+
+#Criando o menu
+def pedirLetra(letrasDigitadas):
+  letraDigitada = input("Digite uma letra: ").upper()
+  letraDigitada = validarLetra(letraDigitada, letrasDigitadas)
+  
+  #Adicionando entrada na lista:
+  letrasDigitadas.append(letraDigitada)
+
+  #Ordenando a lista:
+  letrasDigitadas.sort()
+
+  #Retornando a letra digitada:
+  return letraDigitada 
+
+
 def validarLetra(entrada, letrasDigitadas):
   entrada = convertPalavra(entrada)#Tira os acentos da palavra
  
@@ -205,3 +229,6 @@ while querJogar:
 #Comecando o jogo
 start(tema, palavraSecreta)
 
+#Decidindo se continua ou não
+  continuar = input("Quer continuar jogando? (S/N): ").upper()
+  querJogar = True if continuar == 'S' else False
