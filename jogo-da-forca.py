@@ -265,8 +265,11 @@ while querJogar:
   listaTemas = list(palavras.keys()) #pega as chaves do dicionário palavras e adiciona elas numa lista
   tema = sortearTema(listaTemas)
 
-listaPalavras = palavras[tema]
-palavraSecreta = sortearPalavra(listaPalavras)
+  listaPalavras = palavras[tema]
+  palavraSecreta = sortearPalavra(listaPalavras)
+
+  #Removendo os acentos das palavras
+  palavraSecreta = convertPalavra(palavraSecreta)
 
 #Comecando o jogo
 start(tema, palavraSecreta)
