@@ -165,6 +165,20 @@ def start(tema, palavraSecreta):
       print("GAME OVER!")
       print("A palavra era: ", palavraSecreta)
 
+  def updateAcertadas(letraDigitada, letrasDescobertas, palavraSecreta):
+    if letraDigitada in palavraSecreta:
+      i = 0 
+      for letra in palavraSecreta:
+        if letra == letraDigitada:
+          letrasDescobertas[i] = letraDigitada
+        i += 1 
+
+  def clear():
+    if os.name == "nt": 
+        os.system("cls")
+
+  clear()
+
   acertos = 0
   erros = 0
   letrasDigitadas = []
