@@ -1,35 +1,38 @@
 import random
 import os
 
-#Etapa 0 - ASCII de estados da forca
+# Projeto - Jogo da Forca
 
 #Estados da Forca:
 estado0 = [
 "╔════════╗",
 "║        ¥",
-"║", 
-"║", 
-"║", 
+"║",
+"║",
+"║",
 "║"
 ]
+
 
 estado1 = [
 "╔════════╗",
 "║        ¥",
-"║        O", 
-"║", 
-"║", 
+"║        O",
+"║",
+"║",
 "║"
 ]
+
 
 estado2 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
 "║        |",
-"║", 
+"║",
 "║"
 ]
+
 
 estado3 = [
 "╔════════╗",
@@ -40,14 +43,16 @@ estado3 = [
 "║"
 ]
 
+
 estado4 = [
 "╔════════╗",
 "║        ¥",
 "║        O",
 "║       /|\ ",
-"║", 
+"║",
 "║"
 ]
+
 
 estado5 = [
 "╔════════╗",
@@ -58,6 +63,7 @@ estado5 = [
 "║"
 ]
 
+
 estado6 = [
 "╔════════╗",
 "║        ¥",
@@ -67,9 +73,10 @@ estado6 = [
 "║"
 ]
 
+
 estados = {
-  0:estado0, 
-  1:estado1, 
+  0:estado0,
+  1:estado1,
   2:estado2,
   3:estado3,
   4:estado4,
@@ -77,24 +84,23 @@ estados = {
   6:estado6
 }
 
-
-#Etapa 1 - Listas de Palavras
 animais = open("palavras/animais.txt", "r", encoding="utf8").readlines()
 frutas = open("palavras/frutas.txt", "r", encoding="utf8").readlines()
 objetos = open("palavras/objetos.txt", "r", encoding="utf8").readlines()
 paises = open("palavras/paises.txt", "r", encoding="utf8").readlines()
 
-#Temas
+
+# Temas
 palavras = {
-        'ANIMAL': animais,
-        'FRUTA': frutas,
+        'ANIMAL':animais,
+        'FRUTA':frutas,
         'OBJETO': objetos,
         'PAÍS': paises
 }
 
-#Tratamento de caracteres especiais
+# Tratamento de caracteres especiais
 letrasEspeciais = {
-    "Á":"A", "À":"A", "Ã":"A", "Â":"A",
+    "Á":"A", "À":"A", "Ã":"A", " ":"A",
     "É":"E", "È":"E", "Ê":"E",
     "Í":"I", "Ì":"I", "Î":"I",
     "Ó":"O", "Õ":"O", "Ò":"O",
@@ -104,17 +110,19 @@ letrasEspeciais = {
     " ":"",
   }
 
+
 def convertPalavra(palavra):
   palavra = palavra.replace("\n", "")
   palavra = palavra.upper()
-  
+ 
   for letra in palavra:
     if letra in letrasEspeciais:
       semAcento = letrasEspeciais[letra] #pega a letra sem acento
       palavra = palavra.replace(letra, semAcento)
-
   return palavra
 
+
+#Sorteador
 def sortearPalavra(palavras):
   palavra = random.choice(palavras)
   return palavra
@@ -122,19 +130,20 @@ def sortearPalavra(palavras):
 def sortearTema(temas):
   tema = random.choice(temas)
   return tema
-
+ 
+#Definindo o placar
 acertos = 0
 erros = 0
 letrasTentadas = []
 letrasDescobertas = []
 
+#Função para imprimir forca
 def printForca(erros):
-  forca = estados(erros)
+  forca = estados[erros]
   for linha in forca:
     print(linha)
 
 def printPlacar():
-  
   print("Palavra secreta: ", letrasDescobertas)
   print("Letras tentadas: ", letrasTentadas)
   print("Acertos: ", acertos)
@@ -148,15 +157,17 @@ def definirPlacar(a, e, lt, ld):
   letrasTentadas = lt
   letrasDescobertas = " ".join(ld) #transforma em string
 
+#Inicio do jogo
 def start(tema, palavraSecreta):
-  
+
+
+  #daqui pra baixo
   def printHeader(tema):
-    
     print()
     print("********** JOGO DA FORCA **********")
     print()
     print("TEMA:", tema)
-    
+
   def printResultado(palavraSecreta, acertos, erros):
     if acertos == len(palavraSecreta):
       print("PARABÉNS VOCÊ GANHOU!!")
@@ -167,18 +178,19 @@ def start(tema, palavraSecreta):
 
   def updateAcertadas(letraDigitada, letrasDescobertas, palavraSecreta):
     if letraDigitada in palavraSecreta:
-      i = 0 
+      i = 0 #índice (posição da letra)
       for letra in palavraSecreta:
         if letra == letraDigitada:
           letrasDescobertas[i] = letraDigitada
-        i += 1 
+        i += 1
 
   def clear():
-    if os.name == "nt": 
+    if os.name == "nt": #Se for Windows
         os.system("cls")
 
-  clear()
+  clear() #Limpa a tela para iniciar o jogo #joão victor
 
+  #Placar do jogo
   acertos = 0
   erros = 0
   letrasDigitadas = []
@@ -206,9 +218,10 @@ def start(tema, palavraSecreta):
      
     #Atualizando os valores do placar
     definirPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
-    clear()
+    clear() 
 
-  #Impressões finais do jogo
+
+  #IMpressões finais do jogo
   printHeader(tema)
   printForca(erros)
   printPlacar()
@@ -229,7 +242,6 @@ def pedirLetra(letrasDigitadas):
 
   #Retornando a letra digitada:
   return letraDigitada 
-
 
 def validarLetra(entrada, letrasDigitadas):
   entrada = convertPalavra(entrada)#Tira os acentos da palavra
@@ -257,23 +269,26 @@ def validarLetra(entrada, letrasDigitadas):
     teste2 = len(entrada) > 1  #Analisa se foi digitada mais que uma letra
     teste3 = entrada in letrasDigitadas #Analisa se a letra já tinha sido inserida antes
  
-  return entrada 
+  return entrada #katarina
+
 
 #Condição para continuar jogando
 querJogar = True
 while querJogar:
+  #Sorteando tema
   listaTemas = list(palavras.keys()) #pega as chaves do dicionário palavras e adiciona elas numa lista
-  tema = sortearTema(listaTemas)
+  tema = sortearTema(listaTemas) #samyra
 
+  #Sorteando a plavra secreta
   listaPalavras = palavras[tema]
-  palavraSecreta = sortearPalavra(listaPalavras)
-
+  palavraSecreta = sortearPalavra(listaPalavras) 
+ 
   #Removendo os acentos das palavras
-  palavraSecreta = convertPalavra(palavraSecreta)
+  palavraSecreta = convertPalavra(palavraSecreta) 
 
-#Comecando o jogo
-start(tema, palavraSecreta)
+  #Comecando o jogo
+  start(tema, palavraSecreta) 
 
-#Decidindo se continua ou não
+  #Decidindo se continua ou não
   continuar = input("Quer continuar jogando? (S/N): ").upper()
   querJogar = True if continuar == 'S' else False
