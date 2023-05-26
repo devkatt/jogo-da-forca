@@ -225,13 +225,16 @@ def start(tema, palavraSecreta):
   tempo_decorrido = round(fim - inicio, 2)
   minutos, segundos = divmod(tempo_decorrido, 60)
 
+  #Arredondar segundos para 2 casas decimais
+  segundos = round(segundos, 2)
+
   #IMpressões finais do jogo
   printHeader(tema)
   printForca(erros)
   printPlacar()
   printResultado(palavraSecreta, acertos, erros)
   print()
-  print("O TEMPO DECORRIDO FOI:", tempo_decorrido, "SEGUNDOS!")
+  print("O TEMPO DECORRIDO FOI: {} minutos e {} segundos!".format(minutos, segundos))
   print()
   print("---------------FIM DE JOGO---------------")
 
