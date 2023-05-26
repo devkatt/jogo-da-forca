@@ -1,5 +1,6 @@
 import random
 import os
+import time
 
 # Projeto - Jogo da Forca
 
@@ -160,8 +161,8 @@ def definirPlacar(a, e, lt, ld):
 #Inicio do jogo
 def start(tema, palavraSecreta):
 
+  inicio = time.time()
 
-  #daqui pra baixo
   def printHeader(tema):
     print()
     print("********** JOGO DA FORCA **********")
@@ -220,12 +221,17 @@ def start(tema, palavraSecreta):
     definirPlacar(acertos, erros, letrasDigitadas, letrasDescobertas)
     clear() 
 
+  fim = time.time()
+  tempo_decorrido = round(fim - inicio, 2)
+  minutos, segundos = divmod(tempo_decorrido, 60)
 
   #IMpressões finais do jogo
   printHeader(tema)
   printForca(erros)
   printPlacar()
   printResultado(palavraSecreta, acertos, erros)
+  print()
+  print("O TEMPO DECORRIDO FOI:", tempo_decorrido, "SEGUNDOS!")
   print()
   print("---------------FIM DE JOGO---------------")
 
