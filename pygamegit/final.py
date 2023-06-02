@@ -80,7 +80,7 @@ def placar_erro():
 def desenhar_palavra_descoberta():
     fonte = pygame.font.Font(None, 40)
     texto = fonte.render(" ".join(letras_descobertas), True, WHITE)
-    window.blit(texto, (300, 400))
+    window.blit(texto, (300, 320))
 
 # Função para atualizar a palavra descoberta com a letra correta
 def atualizar_palavra_descoberta(letra):
@@ -165,15 +165,15 @@ def jogar(temporizado):
             # Verificar condições de vitória ou derrota
             if jogador_venceu():
                 fonte = pygame.font.Font(None, 72)
-                texto = fonte.render("Você venceu!", True, BLUE)
-                window.blit(texto, (240, 350))
+                texto = fonte.render("Você venceu!", True, BLACK)
+                window.blit(texto, (240, 400))
             elif erros >= 6:
                 fonte = pygame.font.Font(None, 72)
-                texto = fonte.render("Você perdeu!", True, BLUE)
-                window.blit(texto, (240, 350))
-                fonte = pygame.font.Font(None, 48)
-                texto = fonte.render(f"A palavra era: {palavra_secreta}", True, BLUE)
+                texto = fonte.render("Você perdeu!", True, BLACK)
                 window.blit(texto, (240, 400))
+                fonte = pygame.font.Font(None, 48)
+                texto = fonte.render(f"A palavra era: {palavra_secreta}", True, BLACK)
+                window.blit(texto, (225, 450))
         
         # Mostrar o tempo decorrido, se o modo for dinâmico
             if temporizado:
@@ -189,9 +189,9 @@ def jogar(temporizado):
                 break
 
         # Perguntar se o jogador deseja jogar novamente
-        fonte = pygame.font.Font(None, 48)
-        texto = fonte.render("Começar uma nova rodada? (S ou N)", True, BLUE)
-        window.blit(texto, (140, 500))
+        fonte = pygame.font.Font(None, 30)
+        texto = fonte.render("Começar uma nova rodada? (S ou N)", True, BLACK)
+        window.blit(texto, (240, 500))
         pygame.display.update()
 
         jogando = None
