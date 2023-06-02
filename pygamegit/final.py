@@ -133,16 +133,15 @@ def jogar(temporizado):
                         else:
                             mensagem_erro = "Digite apenas letras! Tente novamente."
                             continue
-                        if not letra_ja_tentada(letra):
-                            letras_tentadas.append(letra)
-                            if letra in palavra_secreta:
-                                acertos += palavra_secreta.count(letra)
-                                atualizar_palavra_descoberta(letra)
-                            else:
-                                erros += 1
-                                mensagem_erro = "Letra incorreta! Tente novamente."
-                                
+                        if letra_ja_tentada(letra):
+                            mensagem_erro = "Você já tentou essa letra! Tente novamente."
+                            continue
+                        letras_tentadas.append(letra)
+                        if letra in palavra_secreta:
+                            acertos += palavra_secreta.count(letra)
+                            atualizar_palavra_descoberta(letra)
                         else:
+                            erros += 1
                             mensagem_erro = "Letra incorreta! Tente novamente."
 
             # Calcular o tempo decorrido
@@ -246,4 +245,3 @@ if modo_jogo == '1':
     jogar(temporizado=False)
 elif modo_jogo == '2':
     jogar(temporizado=True)
-#pedindo pra escolher modos diferentes, tá com temporizador
