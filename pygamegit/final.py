@@ -62,16 +62,11 @@ with open("palavras/objetos.txt", "r", encoding="utf8") as arquivo_objetos:
 with open("palavras/paises.txt", "r", encoding="utf8") as arquivo_paises:
     palavras["paises"] = [linha.strip() for linha in arquivo_paises.readlines()]
     
-palavra_secreta = ""
-letras_descobertas = []
-letras_tentadas = []
-erros = 0
-acertos = 0
-temporizado = False
-
-# Função para sortear uma palavra
+# Função para sortear uma palavra e seu tema
 def sortear_palavra():
-    return random.choice(palavras)
+    tema = random.choice(list(palavras.keys()))
+    palavra = random.choice(palavras[tema])
+    return palavra, tema
 
 # Função para desenhar a forca na janela
 def desenhar_forca():
