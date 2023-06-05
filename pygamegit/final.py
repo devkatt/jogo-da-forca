@@ -49,6 +49,19 @@ palavras = {
     "objetos": []
 }
 
+# Carregar palavras dos arquivos de texto
+with open("palavras/animais.txt", "r", encoding="utf8") as arquivo_animais:
+    palavras["animais"] = [linha.strip() for linha in arquivo_animais.readlines()]
+
+with open("palavras/frutas.txt", "r", encoding="utf8") as arquivo_frutas:
+    palavras["frutas"] = [linha.strip() for linha in arquivo_frutas.readlines()]
+
+with open("palavras/objetos.txt", "r", encoding="utf8") as arquivo_objetos:
+    palavras["objetos"] = [linha.strip() for linha in arquivo_objetos.readlines()]
+
+with open("palavras/paises.txt", "r", encoding="utf8") as arquivo_paises:
+    palavras["paises"] = [linha.strip() for linha in arquivo_paises.readlines()]
+    
 palavra_secreta = ""
 letras_descobertas = []
 letras_tentadas = []
