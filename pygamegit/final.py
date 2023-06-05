@@ -68,12 +68,19 @@ def sortear_palavra():
     palavra = random.choice(palavras[tema])
     return palavra, tema
 
+# Função para desenhar a dica do tema na janela
+def desenhar_dica_tema(tema):
+    fonte = pygame.font.Font(None, 25)
+    texto = fonte.render("Tema: " + tema, True, WHITE)
+    window.blit(texto, (20, 50))
+
 # Função para desenhar a forca na janela
 def desenhar_forca():
     window.blit(estados[erros], (200, 100))
 
 # Função para desenhar as letras tentadas na janela
 def desenhar_letras_tentadas():
+    desenhar_letras_tentadas(tema)
     fonte = pygame.font.Font(None, 25)
     texto = fonte.render("Letras tentadas: " + " ".join(letras_tentadas), True, WHITE)
     window.blit(texto, (20, 20))
