@@ -260,8 +260,13 @@ def exibir_menu():
     return modo
 
 # Executar o jogo
-modo_jogo = exibir_menu()
-if modo_jogo == '1':
-    jogar(temporizado=False)
-elif modo_jogo == '2':
-    jogar(temporizado=True)
+def main():
+    modo_jogo = exibir_menu()
+    if modo_jogo == '1':
+        jogar(temporizado=False)
+        
+    elif modo_jogo == '2':
+        jogar(temporizado=True)
+
+if __name__ == "__main__":
+    main()
