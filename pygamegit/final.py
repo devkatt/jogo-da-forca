@@ -118,13 +118,13 @@ def jogador_venceu():
 
 # Função principal do jogo
 def jogar(temporizado):
-    global palavra_secreta, letras_descobertas, letras_tentadas, erros, acertos, mensagem_erro
+    global palavra_secreta, letras_descobertas, letras_tentadas, erros, acertos, mensagem_erro, tema
 
     jogando = True
 
     while jogando:
         # Sortear uma nova palavra
-        palavra_secreta = sortear_palavra()
+        palavra_secreta,tema = sortear_palavra()
         letras_descobertas = ["_"] * len(palavra_secreta)
         letras_tentadas = []
         erros = 0
