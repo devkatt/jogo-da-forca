@@ -80,10 +80,10 @@ def desenhar_forca():
 
 # Função para desenhar as letras tentadas na janela
 def desenhar_letras_tentadas():
-    desenhar_letras_tentadas(tema)
+    desenhar_dica_tema(tema) 
     fonte = pygame.font.Font(None, 25)
     texto = fonte.render("Letras tentadas: " + " ".join(letras_tentadas), True, WHITE)
-    window.blit(texto, (20, 20))
+    window.blit(texto, (20, 20)) 
 
 # Função para desenhar o placar na janela
 def placar_acerto():
