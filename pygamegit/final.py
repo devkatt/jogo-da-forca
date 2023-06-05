@@ -42,7 +42,12 @@ imagens_redimensionadas = [
 
 
 # Variáveis do jogo
-palavras = ['GATO', 'CACHORRO', 'GIRAFA', 'ELEFANTE']
+palavras = {
+    "animais": [],
+    "frutas": [],
+    "paises": [],
+    "objetos": []
+}
 
 palavra_secreta = ""
 letras_descobertas = []
